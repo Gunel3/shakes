@@ -1,17 +1,21 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <Navbar/>
-    <Index :shakes="shakes"/> 
+  <div class="index container">
+    <div class="card" v-for="shake in shakes" :key="shake.id">
+      <div class="card-content">
+        <h2 class="indigo-text">{{ shake.title }}</h2>
+        <ul class="ingredients">
+          <li v-for="(ing,index) in shake.ings" :key="index">
+            <span class="chip">{{ ing }}</span>
+          </li>
+        </ul> 
+      </div>
     </div>
-    <router-view/>
   </div>
 </template>
+
 <script>
-import Navbar from '@/components/Navbar.vue'
-import Index from '@/components/Index.vue'
 export default {
-   data() {
+     data() {
     return {
       shakes: [
         {
@@ -29,12 +33,7 @@ export default {
       ]
     }
   },
-  components: {
-    Navbar,
-    Index
-  }
+  
 }
 </script>
-<style lang="scss">
 
-</style>
